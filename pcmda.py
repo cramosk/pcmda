@@ -11,6 +11,8 @@ MIT-License, y'all. No need to go to jail for this, thank you very much.
 
 # Core libraries
 import math
+import numpy as np
+
 def GetSteps():
     While True:
         try:
@@ -63,4 +65,15 @@ def GetPeriodicActuatorFunction(x_start, y_start):
             except:
                 print "Invalid number. Try again"
     steps = GetSteps()
+    x, y = [], []
+    for degr in range(0, 360):
+        currentdegr = (degr + angle)%360
+        t.append(currentdegr)
+        x.append(np.cos(currentdegr)+x_start)
+        y.append(np.sin(currentdegr)+y_start)
+    
+    f = {'t': t, 'x': x, 'y': y}
+    
+    return f
+        
     
